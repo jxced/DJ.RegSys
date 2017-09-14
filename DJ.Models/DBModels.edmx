@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RegSysModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClassInfo">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsDel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CourseType" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialty">
+          <Key>
+            <PropertyRef Name="SpecialtyId" />
+          </Key>
+          <Property Name="SpecialtyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialtyName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="CodeName" Type="varchar" MaxLength="24" />
+          <Property Name="IsCross" Type="tinyint" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StuNumber" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="SpecialtyId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students_Subjects">
+          <Key>
+            <PropertyRef Name="Stu_SubId" />
+          </Key>
+          <Property Name="Stu_SubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StuId" Type="int" Nullable="false" />
+          <Property Name="SubId" Type="int" Nullable="false" />
+          <Property Name="IsPass" Type="tinyint" Nullable="false" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CourseTypeId" Type="int" Nullable="false" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="IsDel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UserPwd" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="AddTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="LoginTime" Type="datetime" Precision="0" />
+          <Property Name="IsDel" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK_class_user">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="ClassInfo" Type="Self.ClassInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ClassInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_stuAsub_stu">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="1" />
+          <End Role="Students_Subjects" Type="Self.Students_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Students_Subjects">
+              <PropertyRef Name="StuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_stuAsub_sub">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Students_Subjects" Type="Self.Students_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="Students_Subjects">
+              <PropertyRef Name="SubId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_studen_class">
+          <End Role="ClassInfo" Type="Self.ClassInfo" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassInfo">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_studen_spec">
+          <End Role="Specialty" Type="Self.Specialty" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialty">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_sub_cou">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="1" />
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_user_category">
+          <End Role="UserCategory" Type="Self.UserCategory" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RegSysModelStoreContainer">
+          <EntitySet Name="ClassInfo" EntityType="Self.ClassInfo" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="CourseType" EntityType="Self.CourseType" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="Specialty" EntityType="Self.Specialty" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="Students_Subjects" EntityType="Self.Students_Subjects" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="UserCategory" EntityType="Self.UserCategory" Schema="regsys" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="regsys" store:Type="Tables" />
+          <AssociationSet Name="FK_class_user" Association="Self.FK_class_user">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ClassInfo" EntitySet="ClassInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_stuAsub_stu" Association="Self.Fk_stuAsub_stu">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="Students_Subjects" EntitySet="Students_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_stuAsub_sub" Association="Self.Fk_stuAsub_sub">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Students_Subjects" EntitySet="Students_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_studen_class" Association="Self.Fk_studen_class">
+            <End Role="ClassInfo" EntitySet="ClassInfo" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_studen_spec" Association="Self.Fk_studen_spec">
+            <End Role="Specialty" EntitySet="Specialty" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_sub_cou" Association="Self.Fk_sub_cou">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_user_category" Association="Self.Fk_user_category">
+            <End Role="UserCategory" EntitySet="UserCategory" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RegSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClassInfo">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_class_user" FromRole="ClassInfo" ToRole="UserInfo" />
+          <NavigationProperty Name="StudentInfo" Relationship="Self.Fk_studen_class" FromRole="ClassInfo" ToRole="StudentInfo" />
+        </EntityType>
+        <EntityType Name="CourseType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CourseType1" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="Subjects" Relationship="Self.Fk_sub_cou" FromRole="CourseType" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Specialty">
+          <Key>
+            <PropertyRef Name="SpecialtyId" />
+          </Key>
+          <Property Name="SpecialtyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialtyName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeName" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="IsCross" Type="SByte" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="StudentInfo" Relationship="Self.Fk_studen_spec" FromRole="Specialty" ToRole="StudentInfo" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StuNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialtyId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="ClassInfo" Relationship="Self.Fk_studen_class" FromRole="StudentInfo" ToRole="ClassInfo" />
+          <NavigationProperty Name="Specialty" Relationship="Self.Fk_studen_spec" FromRole="StudentInfo" ToRole="Specialty" />
+          <NavigationProperty Name="Students_Subjects" Relationship="Self.Fk_stuAsub_stu" FromRole="StudentInfo" ToRole="Students_Subjects" />
+        </EntityType>
+        <EntityType Name="Students_Subjects">
+          <Key>
+            <PropertyRef Name="Stu_SubId" />
+          </Key>
+          <Property Name="Stu_SubId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StuId" Type="Int32" Nullable="false" />
+          <Property Name="SubId" Type="Int32" Nullable="false" />
+          <Property Name="IsPass" Type="SByte" Nullable="false" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="StudentInfo" Relationship="Self.Fk_stuAsub_stu" FromRole="Students_Subjects" ToRole="StudentInfo" />
+          <NavigationProperty Name="Subjects" Relationship="Self.Fk_stuAsub_sub" FromRole="Students_Subjects" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="CourseType" Relationship="Self.Fk_sub_cou" FromRole="Subjects" ToRole="CourseType" />
+          <NavigationProperty Name="Students_Subjects" Relationship="Self.Fk_stuAsub_sub" FromRole="Subjects" ToRole="Students_Subjects" />
+        </EntityType>
+        <EntityType Name="UserCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDel" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.Fk_user_category" FromRole="UserCategory" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPwd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" />
+          <Property Name="LoginTime" Type="DateTime" />
+          <Property Name="IsDel" Type="SByte" />
+          <NavigationProperty Name="ClassInfo" Relationship="Self.FK_class_user" FromRole="UserInfo" ToRole="ClassInfo" />
+          <NavigationProperty Name="UserCategory" Relationship="Self.Fk_user_category" FromRole="UserInfo" ToRole="UserCategory" />
+        </EntityType>
+        <Association Name="FK_class_user">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="ClassInfo" Type="Self.ClassInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ClassInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_studen_class">
+          <End Role="ClassInfo" Type="Self.ClassInfo" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassInfo">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_sub_cou">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="1" />
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="CourseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_studen_spec">
+          <End Role="Specialty" Type="Self.Specialty" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialty">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_stuAsub_stu">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="1" />
+          <End Role="Students_Subjects" Type="Self.Students_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Students_Subjects">
+              <PropertyRef Name="StuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_stuAsub_sub">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Students_Subjects" Type="Self.Students_Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="Students_Subjects">
+              <PropertyRef Name="SubId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_user_category">
+          <End Role="UserCategory" Type="Self.UserCategory" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RegSysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClassInfo" EntityType="Self.ClassInfo" />
+          <EntitySet Name="CourseType" EntityType="Self.CourseType" />
+          <EntitySet Name="Specialty" EntityType="Self.Specialty" />
+          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" />
+          <EntitySet Name="Students_Subjects" EntityType="Self.Students_Subjects" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" />
+          <EntitySet Name="UserCategory" EntityType="Self.UserCategory" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <AssociationSet Name="FK_class_user" Association="Self.FK_class_user">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ClassInfo" EntitySet="ClassInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_studen_class" Association="Self.Fk_studen_class">
+            <End Role="ClassInfo" EntitySet="ClassInfo" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_sub_cou" Association="Self.Fk_sub_cou">
+            <End Role="CourseType" EntitySet="CourseType" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_studen_spec" Association="Self.Fk_studen_spec">
+            <End Role="Specialty" EntitySet="Specialty" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_stuAsub_stu" Association="Self.Fk_stuAsub_stu">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="Students_Subjects" EntitySet="Students_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_stuAsub_sub" Association="Self.Fk_stuAsub_sub">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Students_Subjects" EntitySet="Students_Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_user_category" Association="Self.Fk_user_category">
+            <End Role="UserCategory" EntitySet="UserCategory" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RegSysModelStoreContainer" CdmEntityContainer="RegSysEntities">
+          <EntitySetMapping Name="ClassInfo">
+            <EntityTypeMapping TypeName="RegSysModel.ClassInfo">
+              <MappingFragment StoreEntitySet="ClassInfo">
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseType">
+            <EntityTypeMapping TypeName="RegSysModel.CourseType">
+              <MappingFragment StoreEntitySet="CourseType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseType1" ColumnName="CourseType" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialty">
+            <EntityTypeMapping TypeName="RegSysModel.Specialty">
+              <MappingFragment StoreEntitySet="Specialty">
+                <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+                <ScalarProperty Name="SpecialtyName" ColumnName="SpecialtyName" />
+                <ScalarProperty Name="CodeName" ColumnName="CodeName" />
+                <ScalarProperty Name="IsCross" ColumnName="IsCross" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentInfo">
+            <EntityTypeMapping TypeName="RegSysModel.StudentInfo">
+              <MappingFragment StoreEntitySet="StudentInfo">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StuNumber" ColumnName="StuNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students_Subjects">
+            <EntityTypeMapping TypeName="RegSysModel.Students_Subjects">
+              <MappingFragment StoreEntitySet="Students_Subjects">
+                <ScalarProperty Name="Stu_SubId" ColumnName="Stu_SubId" />
+                <ScalarProperty Name="StuId" ColumnName="StuId" />
+                <ScalarProperty Name="SubId" ColumnName="SubId" />
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="RegSysModel.Subjects">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="CourseTypeId" ColumnName="CourseTypeId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCategory">
+            <EntityTypeMapping TypeName="RegSysModel.UserCategory">
+              <MappingFragment StoreEntitySet="UserCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="RegSysModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserCategoryId" ColumnName="UserCategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
