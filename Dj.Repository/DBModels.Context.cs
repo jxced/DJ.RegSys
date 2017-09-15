@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DJ.Models
+namespace DJ.Repository
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using DJ.Models;
     
     public partial class RegSysEntities : DbContext
     {
