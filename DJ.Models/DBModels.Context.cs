@@ -33,5 +33,8 @@ namespace DJ.Models
         public virtual DbSet<Subjects> Subjects { get; set; }
         public virtual DbSet<UserCategory> UserCategory { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<Subject_Cuorse> Subject_Cuorse { get; set; }
+        public virtual DbSet<Teacher_Subject> Teacher_Subject { get; set; }
+        public virtual DbSet<TeacherInfo> TeacherInfo { get; set; }
     }
 }

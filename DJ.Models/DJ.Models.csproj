@@ -88,6 +88,15 @@
     <Compile Include="Subjects.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Subject_Cuorse.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherInfo.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher_Subject.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserCategory.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
