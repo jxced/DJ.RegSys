@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
     <Compile Include="DBModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +70,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dj.IRepository\DJ.IRepository.csproj">
+      <Project>{e68c8f83-60d6-497e-b95c-0d2e40ce5381}</Project>
+      <Name>DJ.IRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DJ.Models\DJ.Models.csproj">
       <Project>{0383740c-c85b-4569-9343-56aa4179285c}</Project>
       <Name>DJ.Models</Name>
