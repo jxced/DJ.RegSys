@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModels.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="EFFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

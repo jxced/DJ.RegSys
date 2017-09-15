@@ -11,7 +11,6 @@ namespace DJ.Web.Controllers
     {
         public ActionResult Index()
         {
-            RegSysEntities db = new RegSysEntities();
             return View();
         }
 

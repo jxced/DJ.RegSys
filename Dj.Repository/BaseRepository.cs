@@ -6,30 +6,43 @@ using System.Threading.Tasks;
 using DJ.IRepository;
 using DJ.Models;
 using System.Data.Entity;
+using System.Linq.Expressions;
+using System.Data.Entity.Infrastructure;
 
 namespace DJ.Repository
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        DbContext db = new RegSysEntities();
+        DbContext db = EFFactory.GetEFContext();
         DbSet<TEntity> _dbset;
+        public DbSet<TEntity> DbSet { get=>_dbset;}
         public BaseRepository()
         {
             _dbset = db.Set<TEntity>();
         }
-        public int Add(TEntity entity)
+
+        public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbset.Add(entity);
         }
 
-        public int Remove(TEntity entity)
+        public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbset.Remove(entity);
+        }
+
+        public void Remove(Expression<Func<TEntity, bool>> pre)
+        {
+            var list= _dbset.Where(pre);
+            foreach (var item in list)
+            {
+                _dbset.Remove(item);
+            }
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbEntityEntry;
         }
     }
 }
