@@ -28,16 +28,32 @@ namespace DJ.IRepository
         void Remove(TEntity entity);
 
         /// <summary>
-        /// 根据表达式pre条件更新
+        /// 根据表达式expression条件更新
         /// </summary>
-        /// <param name="pre">表达式条件</param>
+        /// <param name="expression">表达式条件</param>
         /// <returns></returns>
-        void Remove(Expression<Func<TEntity, bool>> pre);
+        void Remove(Expression<Func<TEntity, bool>> expression);
 
         /// <summary>
-        /// 修改传入的TEntity类型对象
+        /// 根据传入的实体和属性名，修改数据
         /// </summary>
-        /// <param name="entity">要修改的对象</param>
-        void Update(TEntity entity);
+        /// <param name="entity">传入的实体</param>
+        /// <param name="properties">传入要修改的属性名</param>
+        void Update(TEntity entity,params string[] properties);
+
+        /// <summary>
+        /// 根据传入的表达式、属性名和属性值，修改数据
+        /// </summary>
+        /// <param name="expression">条件表达式</param>
+        /// <param name="properties">传入的属性名</param>
+        /// <param name="values">传入的属性值</param>
+        void Update(Expression<Func<TEntity, bool>> expression, string[] properties, object[] values);
+
+        /// <summary>
+        /// 根据条件查询数据
+        /// </summary>
+        /// <param name="expression">条件表达式</param>
+        /// <returns></returns>
+        IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> expression);
     }
 }
