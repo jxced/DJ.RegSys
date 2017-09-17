@@ -9,22 +9,12 @@
 
 namespace DJ.IRepository
 {
-using System;
-using System.Collections.Generic;
-
-public partial class CourseType
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public CourseType()
+	using DJ.Models;
+    using System;
+    using System.Collections.Generic;
+    
+    public partial interface ICourseType:IBaseRepository<CourseType>
     {
-        this.Subject_Cuorse = new HashSet<Subject_Cuorse>();
+    
     }
-
-    public int Id { get; set; }
-    public string CourseType1 { get; set; }
-    public sbyte IsDel { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Subject_Cuorse> Subject_Cuorse { get; set; }
-}
 }

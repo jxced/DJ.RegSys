@@ -9,18 +9,12 @@
 
 namespace DJ.IRepository
 {
-using System;
-using System.Collections.Generic;
-
-public partial class Students_Subjects
-{
-    public int Stu_SubId { get; set; }
-    public int StuId { get; set; }
-    public int SubId { get; set; }
-    public sbyte IsPass { get; set; }
-    public sbyte IsDel { get; set; }
-
-    public virtual StudentInfo StudentInfo { get; set; }
-    public virtual Subjects Subjects { get; set; }
-}
+	using DJ.Models;
+    using System;
+    using System.Collections.Generic;
+    
+    public partial interface IStudents_Subjects:IBaseRepository<Students_Subjects>
+    {
+    
+    }
 }

@@ -9,28 +9,12 @@
 
 namespace DJ.IRepository
 {
-using System;
-using System.Collections.Generic;
-
-public partial class UserInfo
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public UserInfo()
+	using DJ.Models;
+    using System;
+    using System.Collections.Generic;
+    
+    public partial interface IUserInfo:IBaseRepository<UserInfo>
     {
-        this.ClassInfo = new HashSet<ClassInfo>();
+    
     }
-
-    public int UserId { get; set; }
-    public int UserCategoryId { get; set; }
-    public string Name { get; set; }
-    public string UserName { get; set; }
-    public string UserPwd { get; set; }
-    public System.DateTime AddTime { get; set; }
-    public Nullable<System.DateTime> LoginTime { get; set; }
-    public Nullable<sbyte> IsDel { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<ClassInfo> ClassInfo { get; set; }
-    public virtual UserCategory UserCategory { get; set; }
-}
 }

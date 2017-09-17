@@ -9,24 +9,12 @@
 
 namespace DJ.IRepository
 {
-using System;
-using System.Collections.Generic;
-
-public partial class ClassInfo
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public ClassInfo()
+	using DJ.Models;
+    using System;
+    using System.Collections.Generic;
+    
+    public partial interface IClassInfo:IBaseRepository<ClassInfo>
     {
-        this.StudentInfo = new HashSet<StudentInfo>();
+    
     }
-
-    public int ClassId { get; set; }
-    public string ClassName { get; set; }
-    public int UserId { get; set; }
-    public int IsDel { get; set; }
-
-    public virtual UserInfo UserInfo { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<StudentInfo> StudentInfo { get; set; }
-}
 }

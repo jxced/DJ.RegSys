@@ -9,24 +9,12 @@
 
 namespace DJ.IRepository
 {
-using System;
-using System.Collections.Generic;
-
-public partial class Specialty
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Specialty()
+	using DJ.Models;
+    using System;
+    using System.Collections.Generic;
+    
+    public partial interface ISpecialty:IBaseRepository<Specialty>
     {
-        this.StudentInfo = new HashSet<StudentInfo>();
+    
     }
-
-    public int SpecialtyId { get; set; }
-    public string SpecialtyName { get; set; }
-    public string CodeName { get; set; }
-    public Nullable<sbyte> IsCross { get; set; }
-    public sbyte IsDel { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<StudentInfo> StudentInfo { get; set; }
-}
 }
