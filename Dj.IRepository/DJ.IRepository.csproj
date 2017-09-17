@@ -43,43 +43,43 @@
   <ItemGroup>
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubInterface\ClassInfo.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
+    <Compile Include="SubInterface\IClassInfo.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubInterface\CourseType.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
+    <Compile Include="SubInterface\ICourseType.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubInterface\DBModels.cs">
+    <Compile Include="SubInterface\ISpecialty.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\IStudentInfo.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\IStudents_Subjects.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\ISubjects.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\ISubject_Cuorse.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\ITeacherInfo.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\ITeacher_Subject.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\IUserCategory.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\IUserInfo.cs">
+      <DependentUpon>SubInterface.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubInterface\SubInterface.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\Specialty.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\StudentInfo.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\Students_Subjects.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\Subjects.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\Subject_Cuorse.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\TeacherInfo.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\Teacher_Subject.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\UserCategory.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubInterface\UserInfo.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
+      <DependentUpon>SubInterface.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +90,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="SubInterface\DBModels.tt">
+    <Content Include="SubInterface\SubInterface.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModels.cs</LastGenOutput>
+      <LastGenOutput>SubInterface.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
