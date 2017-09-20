@@ -60,9 +60,42 @@
     </Compile>
     <Compile Include="EFFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClass\ClassInfoDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\CourseTypeDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\SpecialtyDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\StudentInfoDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\Students_SubjectsDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="SubClass\SubClass.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\SubjectsDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\Subject_CuorseDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\TeacherInfoDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\Teacher_SubjectDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\UserCategoryDAL.cs">
+      <DependentUpon>SubClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubClass\UserInfoDAL.cs">
       <DependentUpon>SubClass.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -88,6 +121,9 @@
       <Project>{0383740c-c85b-4569-9343-56aa4179285c}</Project>
       <Name>DJ.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SubClass_Extend\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
