@@ -12,7 +12,7 @@ namespace DJ.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class UserCategoryDAL:BaseRepository<Models.UserCategory>,IRepository.IUserCategory
+    public partial class UserCategoryDAL:BaseRepository<Models.UserCategory>,IRepository.IUserCategoryDAL
     {
     }
 }

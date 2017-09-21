@@ -7,14 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DJ.IRepository
+namespace DJ.Service
 {
-	using DJ.Models;
     using System;
     using System.Collections.Generic;
     
-    public partial interface ITeacher_Subject:IBaseRepository<Teacher_Subject>
+    public partial class UserCategoryBLL:BaseService<Models.UserCategory>,IService.IUserCategoryBLL
     {
-    
+    	IRepository.IUserCategoryDAL dal =null; 
+    	public override void SetRepository()
+    		{
+               
+    		}
     }
 }

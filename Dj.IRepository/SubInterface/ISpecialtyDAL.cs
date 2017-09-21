@@ -13,7 +13,7 @@ namespace DJ.IRepository
     using System;
     using System.Collections.Generic;
     
-    public partial interface ISubject_Cuorse:IBaseRepository<Subject_Cuorse>
+    public partial interface ISpecialtyDAL:IBaseRepository<Specialty>
     {
     
     }

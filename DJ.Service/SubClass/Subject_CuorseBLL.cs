@@ -7,12 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DJ.Repository
+namespace DJ.Service
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TeacherInfoDAL:BaseRepository<Models.TeacherInfo>,IRepository.ITeacherInfoDAL
+    public partial class Subject_CuorseBLL:BaseService<Models.Subject_Cuorse>,IService.ISubject_CuorseBLL
     {
+    	IRepository.ISubject_CuorseDAL dal =null; 
+    	public override void SetRepository()
+    		{
+               
+    		}
     }
 }

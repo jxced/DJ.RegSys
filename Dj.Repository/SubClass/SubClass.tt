@@ -27,7 +27,7 @@ namespace DJ.Repository
 {
 <# PushIndent("    "); #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
-public partial class <#= entity.Name #>DAL:BaseRepository<Models.<#= entity.Name #>>,IRepository.I<#= entity.Name #>
+public partial class <#= entity.Name #>DAL:BaseRepository<Models.<#= entity.Name #>>,IRepository.I<#= entity.Name #>DAL
 {
 }
 <#

@@ -12,7 +12,7 @@ namespace DJ.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class CourseTypeDAL:BaseRepository<Models.CourseType>,IRepository.ICourseType
+    public partial class CourseTypeDAL:BaseRepository<Models.CourseType>,IRepository.ICourseTypeDAL
     {
     }
 }

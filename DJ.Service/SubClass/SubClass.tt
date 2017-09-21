@@ -2,7 +2,7 @@
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
  output extension=".cs"#><#
 
-const string inputFile = @"../../DJ.Models/DBModels.edmx";
+const string inputFile = @"../../Dj.Models/DBModels.edmx";
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);
 var ef = new MetadataTools(this);
@@ -20,120 +20,20 @@ WriteHeader(codeStringGenerator, fileManager);
 
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
 {
-    fileManager.StartNewFile("I"+entity.Name+"DAL" + ".cs");
+    fileManager.StartNewFile(entity.Name+"BLL" + ".cs");
     //BeginNamespace(code);
 #>
-namespace DJ.IRepository
+namespace DJ.Service
 {
-	<# PushIndent("    "); #>
-using DJ.Models;
+<# PushIndent("    "); #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
-public partial interface I<#= entity.Name #>DAL:IBaseRepository<<#= entity.Name #>>
+public partial class <#= entity.Name #>BLL:BaseService<Models.<#= entity.Name #>>,IService.I<#= entity.Name #>BLL
 {
-
-}
-<#
-    EndNamespace(code);
-}
-
-foreach (var complex in typeMapper.GetItemsToGenerate<ComplexType>(itemCollection))
-{
-    fileManager.StartNewFile(complex.Name + ".cs");
-    BeginNamespace(code);
-#>
-<#=codeStringGenerator.UsingDirectives(inHeader: false, includeCollections: false)#>
-<#=Accessibility.ForType(complex)#> partial class <#=code.Escape(complex)#>
-{
-<#
-    var complexProperties = typeMapper.GetComplexProperties(complex);
-    var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(complex);
-
-    if (propertiesWithDefaultValues.Any() || complexProperties.Any())
-    {
-#>
-    public <#=code.Escape(complex)#>()
-    {
-<#
-        foreach (var edmProperty in propertiesWithDefaultValues)
-        {
-#>
-        this.<#=code.Escape(edmProperty)#> = <#=typeMapper.CreateLiteral(edmProperty.DefaultValue)#>;
-<#
-        }
-
-        foreach (var complexProperty in complexProperties)
-        {
-#>
-        this.<#=code.Escape(complexProperty)#> = new <#=typeMapper.GetTypeName(complexProperty.TypeUsage)#>();
-<#
-        }
-#>
-    }
-
-<#
-    }
-
-    var simpleProperties = typeMapper.GetSimpleProperties(complex);
-    if (simpleProperties.Any())
-    {
-        foreach(var edmProperty in simpleProperties)
-        {
-#>
-    <#=codeStringGenerator.Property(edmProperty)#>
-<#
-        }
-    }
-
-    if (complexProperties.Any())
-    {
-#>
-
-<#
-        foreach(var edmProperty in complexProperties)
-        {
-#>
-    <#=codeStringGenerator.Property(edmProperty)#>
-<#
-        }
-    }
-#>
-}
-<#
-    EndNamespace(code);
-}
-
-foreach (var enumType in typeMapper.GetEnumItemsToGenerate(itemCollection))
-{
-    fileManager.StartNewFile(enumType.Name + ".cs");
-    BeginNamespace(code);
-#>
-<#=codeStringGenerator.UsingDirectives(inHeader: false, includeCollections: false)#>
-<#
-    if (typeMapper.EnumIsFlags(enumType))
-    {
-#>
-[Flags]
-<#
-    }
-#>
-<#=codeStringGenerator.EnumOpening(enumType)#>
-{
-<#
-    var foundOne = false;
-    
-    foreach (MetadataItem member in typeMapper.GetEnumMembers(enumType))
-    {
-        foundOne = true;
-#>
-    <#=code.Escape(typeMapper.GetEnumMemberName(member))#> = <#=typeMapper.GetEnumMemberValue(member)#>,
-<#
-    }
-
-    if (foundOne)
-    {
-        this.GenerationEnvironment.Remove(this.GenerationEnvironment.Length - 3, 1);
-    }
-#>
+	IRepository.I<#= entity.Name #>DAL dal =null; 
+	public override void SetRepository()
+		{
+           
+		}
 }
 <#
     EndNamespace(code);

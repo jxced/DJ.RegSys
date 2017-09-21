@@ -12,7 +12,7 @@ namespace DJ.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassInfoDAL:BaseRepository<Models.ClassInfo>,IRepository.IClassInfo
+    public partial class ClassInfoDAL:BaseRepository<Models.ClassInfo>,IRepository.IClassInfoDAL
     {
     }
 }

@@ -20,15 +20,15 @@ WriteHeader(codeStringGenerator, fileManager);
 
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
 {
-    fileManager.StartNewFile("I"+entity.Name+"DAL" + ".cs");
+    fileManager.StartNewFile("I"+entity.Name+"BLL" + ".cs");
     //BeginNamespace(code);
 #>
-namespace DJ.IRepository
+namespace DJ.IService
 {
 	<# PushIndent("    "); #>
 using DJ.Models;
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
-public partial interface I<#= entity.Name #>DAL:IBaseRepository<<#= entity.Name #>>
+public partial interface I<#= entity.Name #>BLL:IBaseService<<#= entity.Name #>>
 {
 
 }

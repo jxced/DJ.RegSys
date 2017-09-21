@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DJ.IRepository
+namespace DJ.IService
 {
 	using DJ.Models;
     using System;
     using System.Collections.Generic;
     
-    public partial interface IStudentInfo:IBaseRepository<StudentInfo>
+    public partial interface IStudentInfoBLL:IBaseService<StudentInfo>
     {
     
     }

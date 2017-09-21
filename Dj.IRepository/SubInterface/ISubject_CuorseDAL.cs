@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DJ.Repository
+namespace DJ.IRepository
 {
+	using DJ.Models;
     using System;
     using System.Collections.Generic;
     
-    public partial class TeacherInfoDAL:BaseRepository<Models.TeacherInfo>,IRepository.ITeacherInfoDAL
+    public partial interface ISubject_CuorseDAL:IBaseRepository<Subject_Cuorse>
     {
+    
     }
 }

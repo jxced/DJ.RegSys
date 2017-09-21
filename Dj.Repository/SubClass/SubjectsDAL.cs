@@ -12,7 +12,7 @@ namespace DJ.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class SubjectsDAL:BaseRepository<Models.Subjects>,IRepository.ISubjects
+    public partial class SubjectsDAL:BaseRepository<Models.Subjects>,IRepository.ISubjectsDAL
     {
     }
 }
