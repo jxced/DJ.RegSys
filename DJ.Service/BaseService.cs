@@ -46,6 +46,15 @@ namespace DJ.Service
         /// <returns></returns>
         public void Remove(TEntity entity)
         {
+            try
+            {
+                baseRepository.Remove(entity);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
             
         }
 
@@ -56,7 +65,15 @@ namespace DJ.Service
         /// <returns></returns>
         public void Remove(Expression<Func<TEntity, bool>> expression)
         {
-           
+            try
+            {
+                baseRepository.Remove(expression);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         /// <summary>
