@@ -34,7 +34,7 @@ namespace DJ.Service
             }
             catch (Exception ex)
             {
-                 throw new Exception(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             
         }
