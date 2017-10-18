@@ -28,6 +28,10 @@ namespace DJ.Service
         /// <returns></returns>
         public void Add(TEntity entity)
         {
+            if (entity==null)
+            {
+                throw new ArgumentNullException("新增数据为空");
+            }
             try
             {
                 baseRepository.Add(entity);
@@ -83,7 +87,16 @@ namespace DJ.Service
         /// <param name="propertes">要修改的属性</param>
         public void Update(TEntity entity,params string[] propertes)
         {
-          
+            try
+            {
+                baseRepository.Update(entity, propertes);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -94,7 +107,15 @@ namespace DJ.Service
         /// <param name="values">传入的属性值</param>
         public void Update(Expression<Func<TEntity, bool>>expression, string[] properties, object[] values)
         {
-            
+            try
+            {
+                baseRepository.Update(expression, properties, values);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         /// <summary>
@@ -104,7 +125,8 @@ namespace DJ.Service
         /// <returns></returns>
         public IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> expression)
         {
-            return new List<TEntity>();
+           return baseRepository.Where(expression);
+           
         }
     }
 }
