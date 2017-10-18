@@ -7,7 +7,7 @@
     <ProjectGuid>{8CA66355-1347-4104-94DC-03802B21F9E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IService</RootNamespace>
+    <RootNamespace>DJ.IService</RootNamespace>
     <AssemblyName>IService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseService.cs" />
+    <Compile Include="IServiceSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubInterface\IClassInfoBLL.cs">
       <DependentUpon>SubInterface.tt</DependentUpon>
