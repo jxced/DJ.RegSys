@@ -40,15 +40,23 @@ namespace <#=code.EscapeNamespace(codeNamespace)#>
 
 #>
 using System;
-public partial interface DBSession
+public partial class DBSession
 {
 <#
 foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
 {
 #>
-    <#=entitySet.Name#>DAL  <#= entitySet.Name #>DAL
+	DJ.IRepository.I<#=entitySet.Name#>DAL  _<#=entitySet.Name#>DAL;
+    public DJ.IRepository.I<#=entitySet.Name#>DAL  <#= entitySet.Name #>DAL
 	{
-		get;
+		get
+		{
+			if(_<#=entitySet.Name#>DAL==null)
+			{
+				_<#=entitySet.Name#>DAL=new <#=entitySet.Name#>DAL();
+			}
+			return _<#=entitySet.Name#>DAL;
+		}
 	}
 <#
 }

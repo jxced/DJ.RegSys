@@ -9,51 +9,139 @@
 namespace DJ.Repository
 {
     using System;
-    public partial interface DBSession
+    public partial class DBSession
     {
-        ClassInfoDAL  ClassInfoDAL
+    	DJ.IRepository.IClassInfoDAL  _ClassInfoDAL;
+        public DJ.IRepository.IClassInfoDAL  ClassInfoDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_ClassInfoDAL==null)
+    			{
+    				_ClassInfoDAL=new ClassInfoDAL();
+    			}
+    			return _ClassInfoDAL;
+    		}
     	}
-        CourseTypeDAL  CourseTypeDAL
+    	DJ.IRepository.ICourseTypeDAL  _CourseTypeDAL;
+        public DJ.IRepository.ICourseTypeDAL  CourseTypeDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_CourseTypeDAL==null)
+    			{
+    				_CourseTypeDAL=new CourseTypeDAL();
+    			}
+    			return _CourseTypeDAL;
+    		}
     	}
-        SpecialtyDAL  SpecialtyDAL
+    	DJ.IRepository.ISpecialtyDAL  _SpecialtyDAL;
+        public DJ.IRepository.ISpecialtyDAL  SpecialtyDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_SpecialtyDAL==null)
+    			{
+    				_SpecialtyDAL=new SpecialtyDAL();
+    			}
+    			return _SpecialtyDAL;
+    		}
     	}
-        StudentInfoDAL  StudentInfoDAL
+    	DJ.IRepository.IStudentInfoDAL  _StudentInfoDAL;
+        public DJ.IRepository.IStudentInfoDAL  StudentInfoDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_StudentInfoDAL==null)
+    			{
+    				_StudentInfoDAL=new StudentInfoDAL();
+    			}
+    			return _StudentInfoDAL;
+    		}
     	}
-        Students_SubjectsDAL  Students_SubjectsDAL
+    	DJ.IRepository.IStudents_SubjectsDAL  _Students_SubjectsDAL;
+        public DJ.IRepository.IStudents_SubjectsDAL  Students_SubjectsDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_Students_SubjectsDAL==null)
+    			{
+    				_Students_SubjectsDAL=new Students_SubjectsDAL();
+    			}
+    			return _Students_SubjectsDAL;
+    		}
     	}
-        SubjectsDAL  SubjectsDAL
+    	DJ.IRepository.ISubjectsDAL  _SubjectsDAL;
+        public DJ.IRepository.ISubjectsDAL  SubjectsDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_SubjectsDAL==null)
+    			{
+    				_SubjectsDAL=new SubjectsDAL();
+    			}
+    			return _SubjectsDAL;
+    		}
     	}
-        UserCategoryDAL  UserCategoryDAL
+    	DJ.IRepository.IUserCategoryDAL  _UserCategoryDAL;
+        public DJ.IRepository.IUserCategoryDAL  UserCategoryDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_UserCategoryDAL==null)
+    			{
+    				_UserCategoryDAL=new UserCategoryDAL();
+    			}
+    			return _UserCategoryDAL;
+    		}
     	}
-        UserInfoDAL  UserInfoDAL
+    	DJ.IRepository.IUserInfoDAL  _UserInfoDAL;
+        public DJ.IRepository.IUserInfoDAL  UserInfoDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_UserInfoDAL==null)
+    			{
+    				_UserInfoDAL=new UserInfoDAL();
+    			}
+    			return _UserInfoDAL;
+    		}
     	}
-        Subject_CuorseDAL  Subject_CuorseDAL
+    	DJ.IRepository.ISubject_CuorseDAL  _Subject_CuorseDAL;
+        public DJ.IRepository.ISubject_CuorseDAL  Subject_CuorseDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_Subject_CuorseDAL==null)
+    			{
+    				_Subject_CuorseDAL=new Subject_CuorseDAL();
+    			}
+    			return _Subject_CuorseDAL;
+    		}
     	}
-        Teacher_SubjectDAL  Teacher_SubjectDAL
+    	DJ.IRepository.ITeacher_SubjectDAL  _Teacher_SubjectDAL;
+        public DJ.IRepository.ITeacher_SubjectDAL  Teacher_SubjectDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_Teacher_SubjectDAL==null)
+    			{
+    				_Teacher_SubjectDAL=new Teacher_SubjectDAL();
+    			}
+    			return _Teacher_SubjectDAL;
+    		}
     	}
-        TeacherInfoDAL  TeacherInfoDAL
+    	DJ.IRepository.ITeacherInfoDAL  _TeacherInfoDAL;
+        public DJ.IRepository.ITeacherInfoDAL  TeacherInfoDAL
     	{
-    		get;
+    		get
+    		{
+    			if(_TeacherInfoDAL==null)
+    			{
+    				_TeacherInfoDAL=new TeacherInfoDAL();
+    			}
+    			return _TeacherInfoDAL;
+    		}
     	}
     }
 }
