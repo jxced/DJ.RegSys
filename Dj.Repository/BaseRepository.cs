@@ -12,6 +12,10 @@ using System.Reflection;
 
 namespace DJ.Repository
 {
+    /// <summary>
+    /// 数据仓储基类，实现数据仓储父接口
+    /// </summary>
+    /// <typeparam name="TEntity">实体类 类型参数-对应 要操作的数据表</typeparam>
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         DbContext db = EFFactory.GetEFContext();

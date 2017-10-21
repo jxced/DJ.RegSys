@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseService.cs" />
+    <Compile Include="IServiceSession1.cs">
+      <DependentUpon>IServiceSession.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="IServiceSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubInterface\IClassInfoBLL.cs">
@@ -83,6 +88,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IServiceSession.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IServiceSession1.cs</LastGenOutput>
+    </Content>
     <Content Include="SubInterface\SubInterface.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SubInterface.cs</LastGenOutput>
