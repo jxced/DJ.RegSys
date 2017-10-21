@@ -1,16 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01UI", "01UI", "{9BCE1ADF-23BF-4DC2-8DA3-D5FFD450BAB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02Service", "02Service", "{D7DF807C-1A89-4021-B15A-7839A16886D4}"
-	ProjectSection(SolutionItems) = preProject
-		Dj.Repository\DBSession.cs = Dj.Repository\DBSession.cs
-		Dj.Repository\DBSession.tt = Dj.Repository\DBSession.tt
-		Dj.Repository\DBSession1.cs = Dj.Repository\DBSession1.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03Repository", "03Repository", "{0A67CB42-66C3-47DB-9EE2-07DF5E723BA3}"
 EndProject

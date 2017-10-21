@@ -17,6 +17,6 @@ namespace DJ.IService
         /// 业务层接口 SaveChanges
         /// </summary>
         /// <returns></returns>
-        int SaveChacnge();
+        int SaveChanges();
     }
 }

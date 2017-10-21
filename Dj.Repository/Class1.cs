@@ -12,7 +12,7 @@ namespace DJ.Repository
         DBSession dBSession = new DBSession();
         void v()
         {
-            dBSession.ClassInfoDAL.Add();
+           // dBSession.ClassInfoDAL.Add();
         }
     }
 }

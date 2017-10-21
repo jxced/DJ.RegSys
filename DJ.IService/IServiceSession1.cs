@@ -11,47 +11,47 @@ namespace DJ.IService
     using System;
     public partial interface IServiceSession
     {
-        IClassInfoBLL  ClassInfo
+        IClassInfoBLL  ClassInfoBLL
     	{
     		get;
     	}
-        ICourseTypeBLL  CourseType
+        ICourseTypeBLL  CourseTypeBLL
     	{
     		get;
     	}
-        ISpecialtyBLL  Specialty
+        ISpecialtyBLL  SpecialtyBLL
     	{
     		get;
     	}
-        IStudentInfoBLL  StudentInfo
+        IStudentInfoBLL  StudentInfoBLL
     	{
     		get;
     	}
-        IStudents_SubjectsBLL  Students_Subjects
+        IStudents_SubjectsBLL  Students_SubjectsBLL
     	{
     		get;
     	}
-        ISubjectsBLL  Subjects
+        ISubjectsBLL  SubjectsBLL
     	{
     		get;
     	}
-        IUserCategoryBLL  UserCategory
+        IUserCategoryBLL  UserCategoryBLL
     	{
     		get;
     	}
-        IUserInfoBLL  UserInfo
+        IUserInfoBLL  UserInfoBLL
     	{
     		get;
     	}
-        ISubject_CuorseBLL  Subject_Cuorse
+        ISubject_CuorseBLL  Subject_CuorseBLL
     	{
     		get;
     	}
-        ITeacher_SubjectBLL  Teacher_Subject
+        ITeacher_SubjectBLL  Teacher_SubjectBLL
     	{
     		get;
     	}
-        ITeacherInfoBLL  TeacherInfo
+        ITeacherInfoBLL  TeacherInfoBLL
     	{
     		get;
     	}
