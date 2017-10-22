@@ -17,7 +17,7 @@ namespace DJ.Service
     	IRepository.IClassInfoDAL dal =null; 
     	public override void SetRepository()
     		{
-               dal=base.
+               
     		}
     }
 }
