@@ -15,9 +15,10 @@ namespace DJ.Service
     public partial class SpecialtyBLL:BaseService<Models.Specialty>,IService.ISpecialtyBLL
     {
     	IRepository.ISpecialtyDAL dal =null; 
-    	public override void SetRepository()
-    		{
-               
-    		}
+    	public override void SetRepository(out IRepository.IBaseRepository<Models.Specialty> baseRepository)
+            {
+                dal= base.DBSession.SpecialtyDAL;
+                baseRepository = dal as IRepository.IBaseRepository<Models.Specialty>;
+            }
     }
 }

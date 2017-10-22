@@ -30,10 +30,11 @@ namespace DJ.Service
 public partial class <#= entity.Name #>BLL:BaseService<Models.<#= entity.Name #>>,IService.I<#= entity.Name #>BLL
 {
 	IRepository.I<#= entity.Name #>DAL dal =null; 
-	public override void SetRepository()
-		{
-           
-		}
+	public override void SetRepository(out IRepository.IBaseRepository<Models.<#= entity.Name #>> baseRepository)
+        {
+            dal= base.DBSession.<#= entity.Name #>DAL;
+            baseRepository = dal as IRepository.IBaseRepository<Models.<#= entity.Name #>>;
+        }
 }
 <#
     EndNamespace(code);

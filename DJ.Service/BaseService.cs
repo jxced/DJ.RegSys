@@ -13,14 +13,22 @@ namespace DJ.Service
 {
     public abstract class BaseService<TEntity> : IService.IBaseService<TEntity> where TEntity : class
     {
-        IBaseRepository<TEntity> baseRepository = null;
-
+        IBaseRepository<TEntity> baseRepository;
+        
         public BaseService()
         {
-            SetRepository();
+            SetRepository(out baseRepository);
         }
-        public abstract void SetRepository();
-        
+        public abstract void SetRepository(out IBaseRepository<TEntity> baseRepository);
+
+        public IDBSession DBSession
+        {
+            get
+            {
+                return DBSessionFactory.GetDBSession();
+            }
+        }
+
         /// <summary>
         /// 新增Tentity 类型的实体
         /// </summary>

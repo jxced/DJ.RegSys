@@ -15,9 +15,10 @@ namespace DJ.Service
     public partial class UserInfoBLL:BaseService<Models.UserInfo>,IService.IUserInfoBLL
     {
     	IRepository.IUserInfoDAL dal =null; 
-    	public override void SetRepository()
-    		{
-               
-    		}
+    	public override void SetRepository(out IRepository.IBaseRepository<Models.UserInfo> baseRepository)
+            {
+                dal= base.DBSession.UserInfoDAL;
+                baseRepository = dal as IRepository.IBaseRepository<Models.UserInfo>;
+            }
     }
 }

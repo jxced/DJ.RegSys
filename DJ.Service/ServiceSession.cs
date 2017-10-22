@@ -13,7 +13,6 @@ namespace DJ.Service
     /// </summary>
     public partial class ServiceSession : IService.IServiceSession
     {
-        
         /// <summary>
         /// 统一保存线程内的ef crud操作
         /// </summary>

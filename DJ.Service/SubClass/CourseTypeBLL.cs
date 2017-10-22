@@ -15,9 +15,10 @@ namespace DJ.Service
     public partial class CourseTypeBLL:BaseService<Models.CourseType>,IService.ICourseTypeBLL
     {
     	IRepository.ICourseTypeDAL dal =null; 
-    	public override void SetRepository()
-    		{
-               
-    		}
+    	public override void SetRepository(out IRepository.IBaseRepository<Models.CourseType> baseRepository)
+            {
+                dal= base.DBSession.CourseTypeDAL;
+                baseRepository = dal as IRepository.IBaseRepository<Models.CourseType>;
+            }
     }
 }

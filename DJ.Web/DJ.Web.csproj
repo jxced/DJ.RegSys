@@ -224,6 +224,10 @@
       <Project>{0383740c-c85b-4569-9343-56aa4179285c}</Project>
       <Name>DJ.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DJ.Utility\DJ.Utility.csproj">
+      <Project>{d1359aef-0853-4928-a152-88a1538f97ab}</Project>
+      <Name>DJ.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

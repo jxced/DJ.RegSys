@@ -11,7 +11,7 @@ namespace DJ.Web.Controllers
     {
         public ActionResult Index()
         {
-            
+            //DJ.IService.IClassInfoBLL classInfoBLL = Utility.DI.GetObject("classInfoBLL");
             return View();
         }
 

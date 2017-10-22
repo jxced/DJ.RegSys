@@ -15,9 +15,10 @@ namespace DJ.Service
     public partial class SubjectsBLL:BaseService<Models.Subjects>,IService.ISubjectsBLL
     {
     	IRepository.ISubjectsDAL dal =null; 
-    	public override void SetRepository()
-    		{
-               
-    		}
+    	public override void SetRepository(out IRepository.IBaseRepository<Models.Subjects> baseRepository)
+            {
+                dal= base.DBSession.SubjectsDAL;
+                baseRepository = dal as IRepository.IBaseRepository<Models.Subjects>;
+            }
     }
 }

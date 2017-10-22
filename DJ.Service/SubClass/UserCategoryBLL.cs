@@ -15,9 +15,10 @@ namespace DJ.Service
     public partial class UserCategoryBLL:BaseService<Models.UserCategory>,IService.IUserCategoryBLL
     {
     	IRepository.IUserCategoryDAL dal =null; 
-    	public override void SetRepository()
-    		{
-               
-    		}
+    	public override void SetRepository(out IRepository.IBaseRepository<Models.UserCategory> baseRepository)
+            {
+                dal= base.DBSession.UserCategoryDAL;
+                baseRepository = dal as IRepository.IBaseRepository<Models.UserCategory>;
+            }
     }
 }
