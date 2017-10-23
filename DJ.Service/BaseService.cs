@@ -19,7 +19,7 @@ namespace DJ.Service
         {
             SetRepository(out baseRepository);
         }
-        public abstract void SetRepository(out IBaseRepository<TEntity> baseRepository);
+        public abstract void SetRepository(out  IBaseRepository<TEntity> baseRepository);
 
         public IDBSession DBSession
         {
