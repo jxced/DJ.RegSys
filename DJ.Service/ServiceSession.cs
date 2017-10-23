@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DJ.Service
 {
     /// <summary>
-    /// 数据仓储，作用：
+    /// 业务层仓储，作用：
     /// 1.调用EF容器 批量 执行 sql语句
     /// 2.方便通过 子接口属性直接 获取 对应数据表的操作接口对象
     /// </summary>

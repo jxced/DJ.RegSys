@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DJ.Models;
+using DJ.Service;
 
 namespace DJ.Web.Controllers
 {
@@ -12,6 +13,8 @@ namespace DJ.Web.Controllers
         public ActionResult Index()
         {
             //DJ.IService.IClassInfoBLL classInfoBLL = Utility.DI.GetObject("classInfoBLL");
+            DJ.IService.IServiceSession serviceSession = DJ.Utility.DI.GetObject<ServiceSession>("ServiceSession");
+            serviceSession.ClassInfoBLL.Where(c => c.ClassId == 1);
             return View();
         }
 
