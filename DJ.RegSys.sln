@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00Schemas", "00Schemas", "{
 		packages\Plugins\spring-objects-1.3.xsd = packages\Plugins\spring-objects-1.3.xsd
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DJ.UIHelper", "DJ.UIHelper\DJ.UIHelper.csproj", "{7102B3C7-2A66-4990-8727-69B9AB9B7185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{D1359AEF-0853-4928-A152-88A1538F97AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1359AEF-0853-4928-A152-88A1538F97AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1359AEF-0853-4928-A152-88A1538F97AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7102B3C7-2A66-4990-8727-69B9AB9B7185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7102B3C7-2A66-4990-8727-69B9AB9B7185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7102B3C7-2A66-4990-8727-69B9AB9B7185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7102B3C7-2A66-4990-8727-69B9AB9B7185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{A028B815-E7C9-4B92-A973-AA6712870B0A} = {D7DF807C-1A89-4021-B15A-7839A16886D4}
 		{8CA66355-1347-4104-94DC-03802B21F9E2} = {D7DF807C-1A89-4021-B15A-7839A16886D4}
 		{D1359AEF-0853-4928-A152-88A1538F97AB} = {6A50BB32-FC03-4789-87F2-09EBF696C629}
+		{7102B3C7-2A66-4990-8727-69B9AB9B7185} = {9BCE1ADF-23BF-4DC2-8DA3-D5FFD450BAB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E4563BB-AAD6-44D0-B1B9-D6EA9C2E39DF}
