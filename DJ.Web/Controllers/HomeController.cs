@@ -13,9 +13,7 @@ namespace DJ.Web.Controllers
     {
         public ActionResult Index()
         {
-            //DJ.IService.IClassInfoBLL classInfoBLL = Utility.DI.GetObject("classInfoBLL");
-            DJ.IService.IServiceSession serviceSession = DJ.Utility.DI.GetObject<IServiceSession>("ServiceSession");
-            serviceSession.ClassInfoBLL.Where(c => c.ClassId == 1);
+           CurrentContext.ServiceSession.ClassInfoBLL
             
             return View();
         }
