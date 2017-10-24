@@ -116,10 +116,6 @@
       <Project>{0383740c-c85b-4569-9343-56aa4179285c}</Project>
       <Name>DJ.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dj.Repository\DJ.Repository.csproj">
-      <Project>{CC00185B-69BD-4DAB-B51D-88B0A1C6EC6B}</Project>
-      <Name>DJ.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DJ.Utility\DJ.Utility.csproj">
       <Project>{d1359aef-0853-4928-a152-88a1538f97ab}</Project>
       <Name>DJ.Utility</Name>

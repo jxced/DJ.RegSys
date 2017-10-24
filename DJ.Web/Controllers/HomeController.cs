@@ -4,17 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DJ.Models;
-using DJ.Service;
+using DJ.IService;
+using DJ.UIHelper;
 
 namespace DJ.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
             //DJ.IService.IClassInfoBLL classInfoBLL = Utility.DI.GetObject("classInfoBLL");
-            DJ.IService.IServiceSession serviceSession = DJ.Utility.DI.GetObject<ServiceSession>("ServiceSession");
+            DJ.IService.IServiceSession serviceSession = DJ.Utility.DI.GetObject<IServiceSession>("ServiceSession");
             serviceSession.ClassInfoBLL.Where(c => c.ClassId == 1);
+            
             return View();
         }
 

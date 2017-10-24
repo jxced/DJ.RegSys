@@ -224,9 +224,9 @@
       <Project>{0383740c-c85b-4569-9343-56aa4179285c}</Project>
       <Name>DJ.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DJ.Service\DJ.Service.csproj">
-      <Project>{A028B815-E7C9-4B92-A973-AA6712870B0A}</Project>
-      <Name>DJ.Service</Name>
+    <ProjectReference Include="..\DJ.UIHelper\DJ.UIHelper.csproj">
+      <Project>{7102b3c7-2a66-4990-8727-69b9ab9b7185}</Project>
+      <Name>DJ.UIHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\DJ.Utility\DJ.Utility.csproj">
       <Project>{d1359aef-0853-4928-a152-88a1538f97ab}</Project>
