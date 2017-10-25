@@ -13,7 +13,7 @@ namespace DJ.Web.Controllers
     {
         public ActionResult Index()
         {
-           CurrentContext.ServiceSession.ClassInfoBLL
+           
             
             return View();
         }

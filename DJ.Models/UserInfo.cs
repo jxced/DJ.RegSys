@@ -11,6 +11,8 @@ namespace DJ.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class UserInfo
     {
@@ -23,6 +25,7 @@ namespace DJ.Models
         public int UserId { get; set; }
         public int UserCategoryId { get; set; }
         public string Name { get; set; }
+        [Required(ErrorMessage ="用户名不能为空")]
         public string UserName { get; set; }
         public string UserPwd { get; set; }
         public System.DateTime AddTime { get; set; }

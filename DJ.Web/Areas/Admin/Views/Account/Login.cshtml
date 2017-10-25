@@ -1,0 +1,60 @@
+﻿@model DJ.Models.UserInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="/Areas/Admin/Content/style.css" rel="stylesheet" media="all" />
+    <title>管理员登陆界面</title>
+</head>
+    <body>
+        <div class="login">
+            <div class="login-main">
+                <div class="login-top">
+                    <img src="/Areas/Admin/Content/images/head-img.png" alt="" />
+                    <h1>Login <span class="anc-color"> to your account</span> </h1>
+                    <h2>Login with</h2>
+                    <ul>
+                        <li><a class="fa" href="#"> </a></li>
+                        <li><a class="tw" href="#"> </a></li>
+                        <li><a class="g" href="#"> </a></li>
+                    </ul>
+                    <h3> or</h3>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(Model => Model.UserName, new { placeholder = "Email", })
+                    @Html.ValidationMessageFor(Model => Model.UserName)
+                    @*<input type="text" placeholder="Email" required="">*@
+                    @Html.PasswordFor(Model => Model.UserPwd,new { placeholder = "Password"})
+                    @Html.ValidationMessageFor(Model => Model.UserPwd)
+                    @*<input type="password" placeholder="Password" required="">*@
+                    <div class="login-bottom">
+                        <div class="login-check">
+                            <label class="checkbox"><input type="checkbox" name="checkbox" checked><i> </i> Remember Me</label>
+                        </div>
+                        <div class="login-para">
+                            <p><a href="#"> Forgot Password </a></p>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                    <input type="submit" value="Login" />
+                }
+                    <h4>Don't have an account? <a href="#"> Register now! </a></h4>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Template by <a href="http://www.smallseashell.com">.小贝壳网站模板</a></p>
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    </body>
+</html>
