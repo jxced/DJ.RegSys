@@ -28,7 +28,8 @@ namespace DJ.Web.Areas.Admin.Controllers
                 }
                 
             }
-            return JavaScript("用户名密码不正确！");
+            ModelState.AddModelError("", "用户名或密码错误");
+            return View();
         }
         public ActionResult LoginOut()
         {

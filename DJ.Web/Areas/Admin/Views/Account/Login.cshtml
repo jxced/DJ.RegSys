@@ -30,14 +30,15 @@
                     <h3> or</h3>
                     <div class="login-input">
                         @Html.AntiForgeryToken()
-                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "Password" })
+                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "Email" })
                         @*<input type="text" placeholder="Email" required="">*@
                         @Html.PasswordFor(Model => Model.UserPwd, new { @class = "form-control", placeholder = "Password" })
                         @*<input type="password" placeholder="Password" required="">*@
                     </div>
                     <div class="login-Validation">
-                        @Html.ValidationMessageFor(Model => Model.UserName, "", new { @class = "text-danger" })
-                        @Html.ValidationMessageFor(Model => Model.UserPwd, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(Model => Model.UserName, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(Model => Model.UserPwd, "", new { @class = "text-danger" })*@
+                        @Html.ValidationSummary("",new { @class = "text-danger" })
                     </div>
                     <div class="login-bottom">
                         <div class="login-check">
