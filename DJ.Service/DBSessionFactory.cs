@@ -11,13 +11,13 @@ namespace DJ.Service
     {
        public static IRepository.IDBSession GetDBSession()
         {
-            var db= CallContext.GetData("DBSession") as IRepository.IDBSession;
+            var db= CallContext.GetData("DBSession") ;
             if (db==null)
             {
-                db = DJ.Utility.DI.GetObject<IRepository.IDBSession>("DBSession");
+                db = DJ.Utility.DI.GetObject< IRepository.IDBSession>("DBSession");
                 CallContext.SetData("DBSession", db);
             }
-            return db;
+            return db as IRepository.IDBSession;
         }
     }
 }

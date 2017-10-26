@@ -13,7 +13,9 @@
     <link href="/Areas/Admin/Content/style.css" rel="stylesheet" media="all" />
     <title>管理员登陆界面</title>
 </head>
-    <body>
+<body>
+    @using (Html.BeginForm("Login","Account",FormMethod.Post))
+    {
         <div class="login">
             <div class="login-main">
                 <div class="login-top">
@@ -26,15 +28,17 @@
                         <li><a class="g" href="#"> </a></li>
                     </ul>
                     <h3> or</h3>
-                @using (Html.BeginForm(FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.TextBoxFor(Model => Model.UserName, new { placeholder = "Email", })
-                    @Html.ValidationMessageFor(Model => Model.UserName)
-                    @*<input type="text" placeholder="Email" required="">*@
-                    @Html.PasswordFor(Model => Model.UserPwd,new { placeholder = "Password"})
-                    @Html.ValidationMessageFor(Model => Model.UserPwd)
-                    @*<input type="password" placeholder="Password" required="">*@
+                    <div class="login-input">
+                        @Html.AntiForgeryToken()
+                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "Password" })
+                        @*<input type="text" placeholder="Email" required="">*@
+                        @Html.PasswordFor(Model => Model.UserPwd, new { @class = "form-control", placeholder = "Password" })
+                        @*<input type="password" placeholder="Password" required="">*@
+                    </div>
+                    <div class="login-Validation">
+                        @Html.ValidationMessageFor(Model => Model.UserName, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(Model => Model.UserPwd, "", new { @class = "text-danger" })
+                    </div>
                     <div class="login-bottom">
                         <div class="login-check">
                             <label class="checkbox"><input type="checkbox" name="checkbox" checked><i> </i> Remember Me</label>
@@ -45,16 +49,16 @@
                         <div class="clear"> </div>
                     </div>
                     <input type="submit" value="Login" />
-                }
+
                     <h4>Don't have an account? <a href="#"> Register now! </a></h4>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <p>Template by <a href="http://www.smallseashell.com">.小贝壳网站模板</a></p>
-        </div>
-        <script src="~/Scripts/jquery-1.10.2.js"></script>
-        <script src="~/Scripts/jquery.validate.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    </body>
+    }
+    <div class="copyright">
+        <p>Template by <a href="http://www.smallseashell.com">.小贝壳网站模板</a></p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
 </html>

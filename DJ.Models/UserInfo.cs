@@ -13,7 +13,8 @@ namespace DJ.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
+    using System.Web.Mvc;
+
     public partial class UserInfo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +28,7 @@ namespace DJ.Models
         public string Name { get; set; }
         [Required(ErrorMessage ="用户名不能为空")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "密码不能为空")]
         public string UserPwd { get; set; }
         public System.DateTime AddTime { get; set; }
         public Nullable<System.DateTime> LoginTime { get; set; }

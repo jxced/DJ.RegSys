@@ -37,7 +37,7 @@ namespace DJ.UIHelper
             get {
                     if (_serviceSession == null)
                     {
-                        _serviceSession = Utility.DI.GetObject<IService.IServiceSession>("ServiceSession");
+                        _serviceSession = Utility.DI.GetObject<IService.IServiceSession>("ServiceSession")  ;
                     }
                     return _serviceSession;
             }
