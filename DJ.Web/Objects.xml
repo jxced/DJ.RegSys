@@ -2,5 +2,5 @@
 <objects xmlns="http://www.springframework.net">
   <object id="DBSession" type="DJ.Repository.DBSession,DJ.Repository" singleton="false"></object>
   <object id="ServiceSession" type="DJ.Service.ServiceSession,DJ.Service" singleton="false"></object>
-  <object id="UserInfo" type="DJ.Models.UserInfo,DJ.Models" singleton="false"></object>
+  
 </objects>

@@ -12,24 +12,23 @@ namespace DJ.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            //Models.UserInfo u = DJ.Utility.DI.GetObject<Models.UserInfo>("UserInfo") as DJ.Models.UserInfo;
-            //u.UserName = "test";
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
-           
-            if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == form["UserName"]).Any())
+           string name=form["UserName"];
+           string pwd= form["UserPwd"];
+            if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName ==name ).Any())
             {
-                if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == form["UserPwd"]).Any())
+                if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
                 {
                     return RedirectToAction("");
                 }
                 
             }
-            return JavaScript("alert('用户名密码不正确！')");
+            return JavaScript("用户名密码不正确！");
         }
         public ActionResult LoginOut()
         {
