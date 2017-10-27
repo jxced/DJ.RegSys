@@ -15,18 +15,20 @@ namespace DJ.Web.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost,ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection form)
         {
-           string name=form["UserName"];
-           string pwd= form["UserPwd"];
-            if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName ==name ).Any())
+            if (ModelState.IsValid)
             {
-                if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
+                string name = form["UserName"];
+                string pwd = form["UserPwd"];
+                if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any())
                 {
-                    return RedirectToAction("");
+                    if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
+                    {
+                        return RedirectToAction("");
+                    }
                 }
-                
             }
             ModelState.AddModelError("", "用户名或密码错误");
             return View();
