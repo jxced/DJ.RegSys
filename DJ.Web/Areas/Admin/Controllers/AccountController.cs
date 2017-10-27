@@ -20,8 +20,8 @@ namespace DJ.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                string name = form["UserName"];
-                string pwd = form["UserPwd"];
+                string name = form["Email"];
+                string pwd = form["Pwd"];
                 if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any())
                 {
                     if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
