@@ -1,4 +1,4 @@
-﻿@model DJ.Models.UserInfo
+﻿@model DJ.Web.Areas.Admin.Models.LoginVEntity
 
 @{
     Layout = null;
@@ -30,9 +30,9 @@
                     <h3> or</h3>
                     <div class="login-input">
                         @Html.AntiForgeryToken()
-                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control", placeholder = "Email" })
+                        @Html.TextBoxFor(Model => Model.Email, new { @class = "form-control", placeholder = "Email" })
                         @*<input type="text" placeholder="Email" required="">*@
-                        @Html.PasswordFor(Model => Model.UserPwd, new { @class = "form-control", placeholder = "Password" })
+                        @Html.PasswordFor(Model => Model.Pwd, new { @class = "form-control", placeholder = "Password" })
                         @*<input type="password" placeholder="Password" required="">*@
                     </div>
                     <div class="login-Validation">
