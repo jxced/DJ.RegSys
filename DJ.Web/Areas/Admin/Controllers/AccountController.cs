@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DJ.Utility;
+using System.Security.Cryptography;
 
 namespace DJ.Web.Areas.Admin.Controllers
 {
@@ -20,8 +22,12 @@ namespace DJ.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                string name = form["Email"];
-                string pwd = form["Pwd"];
+                string name,pwd;
+                using (MD5CryptoServiceProvider md5 =new MD5CryptoServiceProvider())
+                {
+                    name = form["Email"].ToMD5(md5);
+                     pwd = form["Pwd"].ToMD5(md5);
+                }
                 if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any())
                 {
                     if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
