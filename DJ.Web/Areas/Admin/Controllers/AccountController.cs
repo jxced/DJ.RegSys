@@ -45,7 +45,7 @@ namespace DJ.Web.Areas.Admin.Controllers
         }
         public ActionResult Check()
         {
-            string name= Request.Form["UserName"];
+            string name= Request.Form["Email"];
             bool isexsit= CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any();
             return isexsit? Content("true"):Content("false");
         }
