@@ -96,6 +96,8 @@
     <Compile Include="UserInfo.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="TemplateModel\AjaxMsg.cs" />
+    <Compile Include="TemplateModel\LoginVEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
