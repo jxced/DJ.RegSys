@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DJ.Models.TemplateModels
 {
-    public class AjaxMsg<TEntity>
+    public class AjaxMsg
     {
         public MsgState States { get; set; }
         public string Msg { get; set; }
         public string BackUrl { get; set; }
-        public TEntity Data { get; set; }
+        public object Data { get; set; }
     }
 
     public enum MsgState
