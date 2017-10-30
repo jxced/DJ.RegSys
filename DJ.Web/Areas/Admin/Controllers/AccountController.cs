@@ -26,7 +26,7 @@ namespace DJ.Web.Areas.Admin.Controllers
                 using (MD5CryptoServiceProvider md5 =new MD5CryptoServiceProvider())
                 {
                     name = form["Email"].ToMD5(md5);
-                     pwd = form["Pwd"].ToMD5(md5);
+                    pwd = form["Pwd"].ToMD5(md5);
                 }
                 if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any())
                 {
