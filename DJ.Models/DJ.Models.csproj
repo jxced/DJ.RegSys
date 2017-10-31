@@ -97,10 +97,12 @@
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="TemplateModels\AjaxMsg.cs" />
-    <Compile Include="TemplateModels\LoginVEntity.cs" />
+    <Compile Include="ViewModels\LoginVEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="DBModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModels.Designer.cs</LastGenOutput>

@@ -65,7 +65,8 @@ namespace DJ.UIHelper
         {
             return new JsonResult()
             {
-                Data = ajaxMsg
+                Data = ajaxMsg,
+                JsonRequestBehavior=JsonRequestBehavior.AllowGet
             };
         }
     }

@@ -14,5 +14,6 @@ namespace DJ.Models.ViewModels
         [Required(ErrorMessage ="密码不能为空")]
         [MinLength(8,ErrorMessage ="密码长度至少8位")]
         public string Pwd { get; set; }
+        public bool IsKeep { get; set; }
     }
 }
