@@ -90,14 +90,14 @@
     <Compile Include="Teacher_Subject.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="TemplateModes\AjaxMsg.cs" />
     <Compile Include="UserCategory.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="TemplateModels\AjaxMsg.cs" />
-    <Compile Include="ViewModels\LoginVEntity.cs" />
+    <Compile Include="ViewEntity\LoginVEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -133,5 +133,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
