@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DJ.Models.ViewModels
+namespace DJ.Models.ViewEntity
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;

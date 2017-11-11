@@ -28,12 +28,14 @@ namespace DJ.Web.Areas.Admin.Controllers
                     name = form["Email"];
                     pwd = form["Pwd"].ToMD5(md5);
                 }
-               
-                if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).Any())
+                var user = CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).FirstOrDefault();
+                if (user!=null)
                 {
-                    if (CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == pwd).Any())
+                    if (user.UserPwd==pwd)
                     {
-                        return RedirectToAction("");
+                        Session["uInfo"] = user.ToPOCO();
+                        return Redirect("~/HtmlPage1.html");
+                        //return RedirectToAction("");
                     }
                 }
             }
