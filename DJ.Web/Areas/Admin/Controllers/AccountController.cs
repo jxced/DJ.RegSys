@@ -18,22 +18,27 @@ namespace DJ.Web.Areas.Admin.Controllers
         }
 
         [HttpPost,ValidateAntiForgeryToken]
-        public ActionResult Login(FormCollection form)
+        public ActionResult Login(DJ.Models.ViewEntity.LoginVEntity entity)
         {
+            ModelState.Remove("IsKeep");
             if (ModelState.IsValid)
             {
                 string name,pwd;
                 using (MD5CryptoServiceProvider md5 =new MD5CryptoServiceProvider())
                 {
-                    name = form["Email"];
-                    pwd = form["Pwd"].ToMD5(md5);
+                    name = entity.Email;
+                    pwd = entity.Pwd.ToMD5(md5);
                 }
                 var user = CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).FirstOrDefault();
                 if (user!=null)
                 {
                     if (user.UserPwd==pwd)
                     {
-                        Session["uInfo"] = user.ToPOCO();
+                        CurrentContext.Session[UtilityStr.USER_SESSION_KEY]= user.ToPOCO();
+                        if (entity.IsKeep)
+                        {
+                            (user.ToPOCO() as DJ.Models.UserInfo).UserName.Cookie();
+                        }
                         return Redirect("~/HtmlPage1.html");
                         //return RedirectToAction("");
                     }

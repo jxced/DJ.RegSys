@@ -5,13 +5,14 @@
     <title></title>
 </head>
 <body>
-    <input  type="checkbox" id="ch" value="false" onclick="isK()"/>
+    <input data-val="true" data-val-required="IsKeep 字段是必需的。" id="IsKeep" name="IsKeep" onclick="isK()" type="checkbox" value="true" />
+    <input name="IsKeep" type="hidden" value="false" />
     <input  type="button" id="bu" onclick="buk()" value="d"/>
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script>
         function isK() {
             //document.getElementById("ch").setAttribute("value", "ttt")
-            $("#ch").attr("value", "ttt")
+            alert("k");
         }
         function buk() {
             alert("dd");
