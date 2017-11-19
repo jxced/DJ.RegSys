@@ -159,7 +159,6 @@ namespace DJ.UIHelper
         {
             return AjaxMsg(new AjaxMsg() { States = MsgState.OK, Msg = msgErr, BackUrl = backUrl, Data = data });
         }
-
         /// <summary>
         /// 返回ajax请求的json数据
         /// </summary>
