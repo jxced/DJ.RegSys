@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using DJ.Utility;
 using System.Security.Cryptography;
+using System.Web.WebPages;
+
 
 namespace DJ.Web.Areas.Admin.Controllers
 {
@@ -29,15 +31,15 @@ namespace DJ.Web.Areas.Admin.Controllers
                     name = entity.Email;
                     pwd = entity.Pwd.ToMD5(md5);
                 }
-                var user = CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).FirstOrDefault();
+                var user = CurrentContext.ServiceSession.UserInfoBLL.Where(o => o.UserName == name).FirstOrDefault().ToPOCO();
                 if (user!=null)
                 {
                     if (user.UserPwd==pwd)
                     {
-                        CurrentContext.Session[UtilityStr.USER_SESSION_KEY]= user.ToPOCO();
+                        CurrentContext.SessionUserInfo= user;
                         if (entity.IsKeep)
                         {
-                            (user.ToPOCO() as DJ.Models.UserInfo).UserName.Cookie();
+                            CurrentContext.Cookie = user.UserId.ToString();
                         }
                         return Redirect("~/HtmlPage1.html");
                         //return RedirectToAction("");
