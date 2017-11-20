@@ -11,12 +11,18 @@
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script>
         function isK() {
+
             //document.getElementById("ch").setAttribute("value", "ttt")
             alert("k");
         }
         function buk() {
-            alert("dd");
+            alert("未登录，请重新登录！"); if (window.top!=window) {
+                window.top.location = "";
+            } else {
+                window.location = "";
+            }
         }
     </script>
+    
 </body>
 </html>

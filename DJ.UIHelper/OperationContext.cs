@@ -124,7 +124,8 @@ namespace DJ.UIHelper
             }
         }
         #endregion
-        #region 定义的消息集合
+
+        #region 定义的json格式消息集合
         /// <summary>
         /// 返回操作成功的json格式数据
         /// </summary>
@@ -173,5 +174,17 @@ namespace DJ.UIHelper
             };
         }
         #endregion
+        public ContentResult JsMsg(string msg="",string backUrl="")
+        {
+            StringBuilder jStr = new StringBuilder();
+            jStr.Append("<script> alert(\"").Append(msg)
+                .Append("\"); if (window.top != window) { window.top.location =\"")
+                .Append(backUrl).Append("\" }else { window.location=\"")
+                .Append(backUrl).Append("\";} </script>");
+            return new ContentResult() {
+                Content = jStr.ToString(),
+                ContentEncoding = Encoding.UTF8
+            };
+        }
     }
 }

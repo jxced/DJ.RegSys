@@ -18,7 +18,7 @@ namespace DJ.Web.Filter
             }
             else
             {
-                filterContext.Result = operationContext.MsgNoLogin();
+                filterContext.Result = operationContext.JsMsg("未登陆，请重新登陆！","/index.html");
             }
             //base.OnAuthorization(filterContext);
             
