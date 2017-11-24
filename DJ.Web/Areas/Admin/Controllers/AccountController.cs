@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using DJ.Utility;
 using System.Security.Cryptography;
 using System.Web.WebPages;
+using DJ.Web.Attributes;
 
 
 namespace DJ.Web.Areas.Admin.Controllers
@@ -19,7 +20,7 @@ namespace DJ.Web.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost,ValidateAntiForgeryToken]
+        [HttpPost,ValidateAntiForgeryToken,NoCheck]
         public ActionResult Login(DJ.Models.ViewEntity.LoginVEntity entity)
         {
             ModelState.Remove("IsKeep");

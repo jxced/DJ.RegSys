@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Attributes\NoCheckAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filter\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">

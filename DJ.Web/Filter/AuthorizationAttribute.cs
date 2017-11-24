@@ -12,13 +12,19 @@ namespace DJ.Web.Filter
         DJ.UIHelper.OperationContext operationContext = new UIHelper.OperationContext();
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
+            
+            if (CustomIsDefined<DJ.Web.Attributes.NoCheckAttribute>(filterContext))
+            {
+                return;
+            }
             if (IsLogin())
             {
-
+                
             }
             else
             {
                 filterContext.Result = operationContext.JsMsg("未登陆，请重新登陆！","/index.html");
+                base.OnAuthorization(filterContext);
             }
             //base.OnAuthorization(filterContext);
             
@@ -44,6 +50,11 @@ namespace DJ.Web.Filter
                 }
             }
             return true;
+        }
+        private bool CustomIsDefined<T>(System.Web.Mvc.AuthorizationContext filterContext)
+        {
+            Type type = typeof(T);
+            return filterContext.ActionDescriptor.IsDefined(type, false) || filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(type, false);
         }
     }
 }
